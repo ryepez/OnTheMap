@@ -40,7 +40,7 @@ class NetworkRequests {
         
         var stringValue: String {
             switch self {
-           
+            
             case .login:
                 return Endpoints.base + "/session"
             case .getStudentLocation:
@@ -53,9 +53,9 @@ class NetworkRequests {
                 return Endpoints.base + "/session"
             case .getStudentProfile(let uniqueID):
                 return Endpoints.base + "/StudentLocation?uniqueKey=\(uniqueID)"
-            
+                
             }
-        
+            
         }
         var url: URL {
             return URL(string: stringValue)!
@@ -70,7 +70,7 @@ class NetworkRequests {
         request.httpBody = try! JSONEncoder().encode(body)
         print(String(data: test, encoding: .utf8)!)
         
-       request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -82,14 +82,14 @@ class NetworkRequests {
             }
             let range = (5..<data.count)
             let newData = data.subdata(in: range)
-
+            
             let decoder = JSONDecoder()
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: newData)
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
                 }
-               
+                
             } catch {
                 do {
                     let errorResponse = try decoder.decode(LoginError.self, from: data) as Error
@@ -125,14 +125,14 @@ class NetworkRequests {
                 return
             }
             print(String(data: data, encoding: .utf8)!)
-           
+            
             let decoder = JSONDecoder()
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
                 }
-               
+                
             } catch {
                 do {
                     let errorResponse = try decoder.decode(LoginError.self, from: data) as Error
@@ -179,10 +179,10 @@ class NetworkRequests {
         var xsrfCookie: HTTPCookie? = nil
         let sharedCookieStorage = HTTPCookieStorage.shared
         for cookie in sharedCookieStorage.cookies! {
-          if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
         }
         if let xsrfCookie = xsrfCookie {
-          request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
         }
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -204,7 +204,7 @@ class NetworkRequests {
             } catch {
                 print("Error :( ")
             }
-        
+            
         }
         task.resume()
         
@@ -219,8 +219,8 @@ class NetworkRequests {
             } else {
                 completion(false, error)
             }
-        
-    }
+            
+        }
         
     }
     
@@ -229,7 +229,7 @@ class NetworkRequests {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
                 DispatchQueue.main.async {
-                completion(nil, error)
+                    completion(nil, error)
                 }
                 return
             }
@@ -248,7 +248,7 @@ class NetworkRequests {
                     }
                 } catch {
                     DispatchQueue.main.async {
-                    completion(nil, error)
+                        completion(nil, error)
                     }
                 }
                 
@@ -267,7 +267,7 @@ class NetworkRequests {
         print(String(data: test, encoding: .utf8)!)
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
+        
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
@@ -276,14 +276,14 @@ class NetworkRequests {
                 }
                 return
             }
-           
+            
             let decoder = JSONDecoder()
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
                 }
-               
+                
             } catch {
                 do {
                     let errorResponse = try decoder.decode(PostError.self, from: data) as Error
@@ -322,7 +322,7 @@ class NetworkRequests {
     class func studentLocationPUT(completion: @escaping (Bool, Error?) -> Void) {
         
         let body = StudentLocationPost(uniqueKey: Auth.key, firstName: Auth.firstName, lastName: Auth.lastName, mapString: Auth.location, mediaURL: Auth.mediaURL , latitude: Auth.latitude, longitude: Auth.longitude)
-       
+        
         taskForPUTRequest(url: Endpoints.updateStudentLcation(Auth.objectId).url, responseType: UpdateLocation.self, body: body) { (response, error) in
             if let response = response {
                 //setting the objectId so we can use it to update student location
@@ -360,17 +360,17 @@ class NetworkRequests {
     }
     
     class func checkIfStudentPostedAlready() -> Bool {
-    
-    var myArray = [Bool]()
-    for index in Range(0...(DataModel.studentLocations.count - 1)) {
         
-        if DataModel.studentLocations[index].uniqueKey == NetworkRequests.Auth.key {
-            myArray.append(true)
+        var myArray = [Bool]()
+        for index in Range(0...(DataModel.studentLocations.count - 1)) {
+            
+            if DataModel.studentLocations[index].uniqueKey == NetworkRequests.Auth.key {
+                myArray.append(true)
+            }
+            
         }
+        return myArray.contains(true)
         
     }
-    return myArray.contains(true)
-    
-}
     
 }

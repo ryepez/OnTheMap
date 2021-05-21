@@ -9,13 +9,13 @@ import UIKit
 import WebKit
 
 class RegistrationViewController: UIViewController {
-
+    
     @IBOutlet weak var weView: WKWebView!
     override func viewDidLoad() {
-      
+        
         
         super.viewDidLoad()
-
+        
         navigationController?.setNavigationBarHidden(false, animated: true)
         
         let request = URLRequest(url: URL(string: "https://auth.udacity.com/sign-up?next=https://classroom.udacity.com")!)
@@ -24,5 +24,5 @@ class RegistrationViewController: UIViewController {
         
     }
     
-
+    
 }

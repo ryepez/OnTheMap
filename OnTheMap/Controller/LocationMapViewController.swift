@@ -30,35 +30,35 @@ class LocationMapViewController: UIViewController, MKMapViewDelegate  {
         
         //adding the pin
         let annotation = MKPointAnnotation()
-     
+        
         annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         annotation.title = nameLocation
         mapView.addAnnotation(annotation)
-//selects the first annotation so when going to the screen it shows selected
+        //selects the first annotation so when going to the screen it shows selected
         mapView.selectAnnotation(mapView.annotations[0], animated: true)
-
+        
         print(NetworkRequests.Auth.checkIfStudentPostedAlready!)
     }
     
     
     // this method controls the look of the pins and displays the data in a better format
-        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            
-            let reuseId = "pin"
-            
-            var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-
-            if pinView == nil {
-                pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-                pinView!.canShowCallout = true
-                pinView!.pinTintColor = .red
-            }
-            else {
-                pinView!.annotation = annotation
-            }
-            
-            return pinView
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor = .red
         }
+        else {
+            pinView!.annotation = annotation
+        }
+        
+        return pinView
+    }
     
     func handlePostLocation(success: Bool, error: Error?) {
         if success {
@@ -69,10 +69,8 @@ class LocationMapViewController: UIViewController, MKMapViewDelegate  {
             //to cHAnge the root view controller calling the object created in scene delegete
             (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
         } else {
-            let alertVC = UIAlertController(title: "Failure to post your Location", message: "Unable post right now. Please try later", preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            
-            self.present(alertVC, animated: true)
+            //alert
+            showAlert(alertText: "Failure to post your Location", alertMessage: "Unable post right now. Please try later")
         }
     }
     @IBAction func finishAction(_ sender: UIButton) {
@@ -81,7 +79,7 @@ class LocationMapViewController: UIViewController, MKMapViewDelegate  {
             print("something went wrong when check if student has posted before")
             return
         }
-       
+        
         // the student posted alredy so we will replace the data with a PUT request
         
         if checkIfStudentPostedAlready {
@@ -97,17 +95,21 @@ class LocationMapViewController: UIViewController, MKMapViewDelegate  {
     }
     
 
+
 }
 
 extension MKMapView {
-  func centerToLocation(
-    _ location: CLLocation,
-    regionRadius: CLLocationDistance = 1000
-  ) {
-    let coordinateRegion = MKCoordinateRegion(
-      center: location.coordinate,
-      latitudinalMeters: regionRadius,
-      longitudinalMeters: regionRadius)
-    setRegion(coordinateRegion, animated: true)
-  }
+    func centerToLocation(
+        _ location: CLLocation,
+        regionRadius: CLLocationDistance = 1000
+    ) {
+        let coordinateRegion = MKCoordinateRegion(
+            center: location.coordinate,
+            latitudinalMeters: regionRadius,
+            longitudinalMeters: regionRadius)
+        setRegion(coordinateRegion, animated: true)
+    }
+
 }
+
+

@@ -13,8 +13,8 @@ class TableViewController: UITableViewController {
     
     //student posting status 
     var hasStudentPosted = Bool()
-
-   
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +29,7 @@ class TableViewController: UITableViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
-
+    
     // MARK: - Top buttons
     
     @IBAction func logOut(_ sender: UIButton) {
@@ -49,7 +49,7 @@ class TableViewController: UITableViewController {
         }
     }
     
-   
+    
     @IBAction func loadData(_ sender: UIBarButtonItem) {
         
         dataSource.removeAll()
@@ -62,42 +62,42 @@ class TableViewController: UITableViewController {
             //calling a helper method that formats the data in the way that map can use and adding the data to map
             self.dataSource = DataModel.studentLocations
             self.tableView.reloadData()
-    }
+        }
         
     }
     
     func overrideLocation()  {
         let alert = UIAlertController(title: "You Have Already Posted a Student Location. Would You Like to Overwrite You Current Location?", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Overwrite", style: .destructive, handler: {(action) in
-                                      self.transferToOverWriteLocation()
-                                  }))
+            self.transferToOverWriteLocation()
+        }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true)
     }
     
     func transferToOverWriteLocation() {
-                
+        
         NetworkRequests.Auth.checkIfStudentPostedAlready = hasStudentPosted
         
         performSegue(withIdentifier: "AddNewPinViewSentTable", sender: self)
     }
     
     @IBAction func addLocation(_ sender: UIBarButtonItem) {
-    
+        
         //if hasStudentPosted is false it means that students has not posted
         // if the student has posted then an alert will appear
         if hasStudentPosted {
             overrideLocation()
         } else {
-        //This is the option when the user has not posted anything before
+            //This is the option when the user has not posted anything before
             
             NetworkRequests.Auth.checkIfStudentPostedAlready = hasStudentPosted
-
+            
             performSegue(withIdentifier: "AddNewPinViewSentTable", sender: self)
-    }
+        }
     }
     
-
+    
     
     // Marks: Table view setup
     
@@ -105,12 +105,12 @@ class TableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return dataSource.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -119,7 +119,7 @@ class TableViewController: UITableViewController {
         
         let firstName = dataSource[(indexPath as NSIndexPath).row].firstName
         let lastName = dataSource[(indexPath as NSIndexPath).row].lastName
-
+        
         let webSite = dataSource[(indexPath as NSIndexPath).row].mediaURL
         cell?.textLabel?.text = firstName + " " + lastName
         cell?.detailTextLabel?.text = webSite
@@ -131,12 +131,12 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let toOpen = dataSource[(indexPath as NSIndexPath).row].mediaURL
-            guard let url = URL(string: toOpen) else {
-              return
-            }
+        guard let url = URL(string: toOpen) else {
+            return
+        }
         //open safari when select row
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        
     }
     
 }

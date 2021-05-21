@@ -10,7 +10,7 @@ import Foundation
 struct UserLogin: Encodable {
     
     let udacity: LoginRequest
-
+    
     enum CodingKeys: String, CodingKey {
         case udacity = "udacity"
     }

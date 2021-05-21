@@ -15,7 +15,7 @@ struct SessionEnd: Codable {
 }
 
 struct LogOutResponse: Codable {
-   
+    
     let session: SessionEnd
     
 }

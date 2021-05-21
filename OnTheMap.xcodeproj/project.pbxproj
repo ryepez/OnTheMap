@@ -13,6 +13,7 @@
 		F64B7D25264E389B00D7AAD3 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B7D24264E389B00D7AAD3 /* Model.swift */; };
 		F64B7D2A264E5ACB00D7AAD3 /* StudentDataForMapAndTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B7D29264E5ACB00D7AAD3 /* StudentDataForMapAndTable.swift */; };
 		F64B7D35264FA36000D7AAD3 /* LocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B7D34264FA36000D7AAD3 /* LocationMapViewController.swift */; };
+		F69DA4392658355A00E507F7 /* alertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69DA4382658355A00E507F7 /* alertExtension.swift */; };
 		F6CD8B7626462BA000E121DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CD8B7526462BA000E121DA /* AppDelegate.swift */; };
 		F6CD8B7826462BA000E121DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CD8B7726462BA000E121DA /* SceneDelegate.swift */; };
 		F6CD8B7A26462BA000E121DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CD8B7926462BA000E121DA /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 		F64B7D24264E389B00D7AAD3 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F64B7D29264E5ACB00D7AAD3 /* StudentDataForMapAndTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDataForMapAndTable.swift; sourceTree = "<group>"; };
 		F64B7D34264FA36000D7AAD3 /* LocationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapViewController.swift; sourceTree = "<group>"; };
+		F69DA4382658355A00E507F7 /* alertExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = alertExtension.swift; sourceTree = "<group>"; };
 		F6CD8B7226462BA000E121DA /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6CD8B7526462BA000E121DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6CD8B7726462BA000E121DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				F6CD8B9426490B6700E121DA /* TableViewController.swift */,
 				F6CD8B9026490A8900E121DA /* MapViewController.swift */,
 				F64B7D34264FA36000D7AAD3 /* LocationMapViewController.swift */,
+				F69DA4382658355A00E507F7 /* alertExtension.swift */,
 				F6CD8B7926462BA000E121DA /* ViewController.swift */,
 				F64B7D29264E5ACB00D7AAD3 /* StudentDataForMapAndTable.swift */,
 			);
@@ -257,6 +260,7 @@
 				F64B7D25264E389B00D7AAD3 /* Model.swift in Sources */,
 				F6F91E9026510EF800878258 /* StudentPostErrorResponse.swift in Sources */,
 				F6F91E8D2651041D00878258 /* PostLocationResponse.swift in Sources */,
+				F69DA4392658355A00E507F7 /* alertExtension.swift in Sources */,
 				F6CD8BA8264CFA8F00E121DA /* LoginResponse.swift in Sources */,
 				F6CD8B7626462BA000E121DA /* AppDelegate.swift in Sources */,
 				F6F91E9726563F2800878258 /* UpdateLocation.swift in Sources */,

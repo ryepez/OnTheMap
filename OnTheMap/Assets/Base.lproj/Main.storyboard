@@ -315,17 +315,25 @@
                                     <constraint firstAttribute="trailing" secondItem="Ais-yY-JFx" secondAttribute="trailing" constant="50" id="tFJ-vq-0D6"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="mkT-v9-lWQ">
+                                <rect key="frame" x="159" y="313" width="57" height="41"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FfJ-XB-LHf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="mkT-v9-lWQ" firstAttribute="leading" secondItem="FfJ-XB-LHf" secondAttribute="leading" constant="159" id="DRa-w7-dru"/>
                             <constraint firstItem="FfJ-XB-LHf" firstAttribute="bottom" secondItem="QXK-93-cqL" secondAttribute="bottom" constant="300" id="ExM-F2-eW8"/>
+                            <constraint firstItem="mkT-v9-lWQ" firstAttribute="top" secondItem="QXK-93-cqL" secondAttribute="bottom" constant="44" id="HpJ-Uq-xxK"/>
+                            <constraint firstItem="FfJ-XB-LHf" firstAttribute="bottom" secondItem="mkT-v9-lWQ" secondAttribute="bottom" constant="215" id="KWM-8n-eQA"/>
                             <constraint firstItem="FfJ-XB-LHf" firstAttribute="trailing" secondItem="QXK-93-cqL" secondAttribute="trailing" constant="5" id="ObA-BT-lUw"/>
                             <constraint firstItem="QXK-93-cqL" firstAttribute="leading" secondItem="FfJ-XB-LHf" secondAttribute="leading" constant="5" id="WUa-hr-X1o"/>
+                            <constraint firstItem="FfJ-XB-LHf" firstAttribute="trailing" secondItem="mkT-v9-lWQ" secondAttribute="trailing" constant="159" id="j3Z-Ak-tXu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Dax-y9-tJg"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="mkT-v9-lWQ" id="tzh-hQ-5hm"/>
                         <outlet property="cityTextField" destination="7Eq-0c-Q1c" id="hP9-zu-Wdg"/>
                         <outlet property="websiteString" destination="g6u-hx-fa3" id="TVc-7I-o4r"/>
                         <segue destination="lBP-G8-F7U" kind="show" identifier="checkLocation" id="OBd-DC-kR4"/>
@@ -333,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="avG-ED-CcY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977" y="-508"/>
+            <point key="canvasLocation" x="976.79999999999995" y="-508.69565217391306"/>
         </scene>
         <!--Location Map View Controller-->
         <scene sceneID="vmB-Zn-7vb">
