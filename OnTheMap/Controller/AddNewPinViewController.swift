@@ -49,6 +49,8 @@ class AddNewPinViewController: UIViewController {
             else {
                 //alert if request fails
                 self.pleaseSelectLocation()
+                //activity indicator
+                self.activityRequest(false)
                 return
             }
             let lat = location.coordinate.latitude
@@ -64,6 +66,8 @@ class AddNewPinViewController: UIViewController {
                 else {
                     //alert if request fails
                     self.pleaseSelectLocation()
+                    //setting the activity indicator to false
+                    self.activityRequest(false)
                     return}
                 //setting the activity indicator to false
                 self.activityRequest(false)

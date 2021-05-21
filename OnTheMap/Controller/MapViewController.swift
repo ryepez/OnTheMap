@@ -39,10 +39,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 self.mapView.addAnnotations(StudentDataForMapAndTable.studentFormatedData())
             } else {
                 //if unable to download the data print message
-                let alertVC = UIAlertController(title: "Failure to Download Student Locations", message: "Please try again later", preferredStyle: .alert)
-                alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                
-                self.present(alertVC, animated: true)
+                self.showAlert(alertText: "Failure to Download Student Locations", alertMessage: "Please try again later")
+             
             }
             
         }

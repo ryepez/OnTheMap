@@ -45,18 +45,10 @@ class ViewController: UIViewController,  UITextFieldDelegate {
             //to cHAnge the root view controller calling the object created in scene delegete
             (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
         } else {
-            showLoginFailure(message:helperToDisplayAlertForLogin(errorString: error!))
+            showAlert(alertText: "Login Failed", alertMessage: helperToDisplayAlertForLogin(errorString: error!))
         }
     }
-    
-    func showLoginFailure(message: String) {
-        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
-        self.present(alertVC, animated: true)
-    }
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         
         // notifications to key track of the keyboard

@@ -361,6 +361,7 @@ class NetworkRequests {
     
     class func checkIfStudentPostedAlready() -> Bool {
         
+        
         var myArray = [Bool]()
         for index in Range(0...(DataModel.studentLocations.count - 1)) {
             

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension LocationMapViewController {
+extension UIViewController {
     
     func showAlert(alertText : String, alertMessage : String) {
     let alertVC = UIAlertController(title:alertText, message: alertMessage, preferredStyle: .alert)

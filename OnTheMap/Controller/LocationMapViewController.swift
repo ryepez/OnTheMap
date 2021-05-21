@@ -74,7 +74,7 @@ class LocationMapViewController: UIViewController, MKMapViewDelegate  {
         }
     }
     @IBAction func finishAction(_ sender: UIButton) {
-        // unrapping optional
+        // unwrapping optional
         guard let  checkIfStudentPostedAlready = NetworkRequests.Auth.checkIfStudentPostedAlready else {
             print("something went wrong when check if student has posted before")
             return
