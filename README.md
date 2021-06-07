@@ -1,4 +1,4 @@
-## # On The Map
+## On The Map
 
 On the map is an app that allow the user to post his/her location into a map and a link. 
 
