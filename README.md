@@ -1,6 +1,6 @@
 ## On The Map
 
-On the map is an app that allow the user to post his/her location into a map and a link. 
+**On the map** is an app that allow the user to post his/her location into a map. The users can add a link to the post.
 
 ## Installation 
 
